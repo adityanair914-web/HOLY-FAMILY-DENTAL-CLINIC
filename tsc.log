@@ -1,0 +1,18 @@
+﻿src/App.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/App.tsx(23,34): error TS2683: 'this' implicitly has type 'any' because it does not have a type annotation.
+src/components/About.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/Contact.tsx(2,47): error TS6133: 'FaPaperPlane' is declared but its value is never read.
+src/components/Directions.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/Directions.tsx(2,35): error TS6133: 'FaPhoneAlt' is declared but its value is never read.
+src/components/Doctors.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/FloatingWhatsApp.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/Footer.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/Gallery.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/components/Hero.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/Navbar.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/components/Services.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/Services.tsx(13,10): error TS6133: 'MdCleaningServices' is declared but its value is never read.
+src/components/Services.tsx(14,10): error TS2724: '"react-icons/gi"' has no exported member named 'GiBraces'. Did you mean 'GiBracers'?
+src/components/StatsBar.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/Testimonials.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/WhyChooseUs.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
