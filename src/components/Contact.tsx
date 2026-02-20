@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { FaPhoneAlt, FaWhatsapp, FaInstagram } from 'react-icons/fa';
 
 const Contact = () => {
@@ -16,94 +17,124 @@ const Contact = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const text = `Name: ${formData.name}%0APhone: ${formData.phone}%0AService: ${formData.service}%0AMessage: ${formData.message}`;
-        const url = `https://wa.me/91XXXXXXXXXX?text=${text}`; // TODO: Replace placeholder
-        window.open(url, '_blank');
+        window.open(`https://wa.me/919447XXXXXX?text=${text}`, '_blank');
     };
 
+    const contactItems = [
+        {
+            href: 'tel:+919447XXXXXX',
+            icon: <FaPhoneAlt size={18} />,
+            bg: 'bg-secondary/30',
+            iconBg: 'bg-primary',
+            title: 'Call Us',
+            sub: '+91 94470 XXXXX',
+        },
+        {
+            href: 'https://wa.me/919447XXXXXX',
+            icon: <FaWhatsapp size={18} />,
+            bg: 'bg-green-50',
+            iconBg: 'bg-success',
+            title: 'WhatsApp',
+            sub: 'Chat with us directly',
+            external: true,
+        },
+        {
+            href: 'https://instagram.com/holy_family_dental_care',
+            icon: <FaInstagram size={18} />,
+            bg: 'bg-pink-50',
+            iconBg: 'bg-gradient-to-br from-pink-500 to-orange-400',
+            title: 'Instagram',
+            sub: '@holy_family_dental_care',
+            external: true,
+        },
+    ];
+
+    const inputClass = `w-full px-4 py-3 rounded-xl border border-border bg-white
+        focus:ring-2 focus:ring-secondary focus:border-secondary outline-none
+        transition-all duration-200 text-dark placeholder-muted text-sm`;
+
     return (
-        <section id="contact" className="py-20 bg-white">
+        <section id="contact" className="py-24 bg-light">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <span className="text-accent font-bold tracking-widest text-sm uppercase">Get In Touch</span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary mt-2">
+
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-16"
+                >
+                    <span className="section-label mb-4">Get In Touch</span>
+                    <h2 className="font-display text-4xl md:text-5xl text-primary mt-3 mb-4">
                         Book Your Appointment
                     </h2>
-                    <p className="text-gray-600 mt-4">
+                    <p className="text-muted max-w-md mx-auto leading-relaxed">
                         Call us, WhatsApp us, or fill the form below. We are here to help.
                     </p>
-                </div>
+                </motion.div>
 
                 <div className="grid lg:grid-cols-3 gap-8">
                     {/* Contact Cards */}
-                    <div className="space-y-6">
-                        <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-4 p-6 bg-blue-50 rounded-2xl hover:bg-blue-100 transition-colors border border-blue-100">
-                            <div className="bg-primary text-white p-4 rounded-full">
-                                <FaPhoneAlt size={20} />
-                            </div>
-                            <div>
-                                <h3 className="font-bold text-primary">Call Us</h3>
-                                <p className="text-gray-600">+91 XXXXX XXXXX</p>
-                            </div>
-                        </a>
-
-                        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-6 bg-green-50 rounded-2xl hover:bg-green-100 transition-colors border border-green-100">
-                            <div className="bg-success text-white p-4 rounded-full">
-                                <FaWhatsapp size={20} />
-                            </div>
-                            <div>
-                                <h3 className="font-bold text-green-800">WhatsApp</h3>
-                                <p className="text-gray-600">Chat with us directly</p>
-                            </div>
-                        </a>
-
-                        <a href="https://instagram.com/holy_family_dental_care" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-6 bg-pink-50 rounded-2xl hover:bg-pink-100 transition-colors border border-pink-100">
-                            <div className="bg-pink-500 text-white p-4 rounded-full">
-                                <FaInstagram size={20} />
-                            </div>
-                            <div>
-                                <h3 className="font-bold text-pink-700">Instagram</h3>
-                                <p className="text-gray-600">@holy_family_dental_care</p>
-                            </div>
-                        </a>
+                    <div className="space-y-5">
+                        {contactItems.map((item) => (
+                            <motion.a
+                                key={item.title}
+                                href={item.href}
+                                target={item.external ? '_blank' : undefined}
+                                rel={item.external ? 'noopener noreferrer' : undefined}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                whileHover={{ x: 4 }}
+                                transition={{ duration: 0.4 }}
+                                className={`flex items-center gap-4 p-5 ${item.bg} border border-border rounded-2xl
+                                            hover:shadow-teal-sm transition-all duration-300 cursor-pointer`}
+                            >
+                                <div className={`${item.iconBg} text-white p-3.5 rounded-xl flex-shrink-0`}>
+                                    {item.icon}
+                                </div>
+                                <div>
+                                    <h3 className="font-display text-lg font-semibold text-primary">{item.title}</h3>
+                                    <p className="text-muted text-sm">{item.sub}</p>
+                                </div>
+                            </motion.a>
+                        ))}
                     </div>
 
                     {/* Contact Form */}
-                    <div className="lg:col-span-2 bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="lg:col-span-2 bg-white rounded-3xl shadow-teal-md border border-border p-8 md:p-10"
+                    >
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                    <label className="block text-sm font-medium text-dark mb-2">Full Name</label>
                                     <input
-                                        type="text"
-                                        name="name"
-                                        required
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                                        placeholder="John Doe"
+                                        type="text" name="name" required
+                                        value={formData.name} onChange={handleChange}
+                                        className={inputClass} placeholder="John Doe"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                    <label className="block text-sm font-medium text-dark mb-2">Phone Number</label>
                                     <input
-                                        type="tel"
-                                        name="phone"
-                                        required
-                                        value={formData.phone}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                                        placeholder="+91 98765 43210"
+                                        type="tel" name="phone" required
+                                        value={formData.phone} onChange={handleChange}
+                                        className={inputClass} placeholder="+91 98765 43210"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">Service Needed</label>
+                                <label className="block text-sm font-medium text-dark mb-2">Service Needed</label>
                                 <select
-                                    name="service"
-                                    value={formData.service}
-                                    onChange={handleChange}
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all bg-white"
+                                    name="service" value={formData.service} onChange={handleChange}
+                                    className={inputClass}
                                 >
                                     <option>General Consultation</option>
                                     <option>Root Canal Treatment</option>
@@ -115,29 +146,26 @@ const Contact = () => {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">Message (Optional)</label>
+                                <label className="block text-sm font-medium text-dark mb-2">Message (Optional)</label>
                                 <textarea
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    rows={4}
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all resize-none"
+                                    name="message" value={formData.message} onChange={handleChange}
+                                    rows={4} className={`${inputClass} resize-none`}
                                     placeholder="Tell us about your dental concern..."
-                                ></textarea>
+                                />
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full bg-success hover:bg-green-600 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 transform active:scale-95"
+                                className="btn-whatsapp w-full py-4 text-base"
                             >
-                                <FaWhatsapp size={22} />
+                                <FaWhatsapp size={20} />
                                 Send Request via WhatsApp
                             </button>
-                            <p className="text-xs text-gray-400 text-center mt-4">
+                            <p className="text-xs text-muted text-center">
                                 This will open WhatsApp with your details pre-filled. No data is stored on our servers.
                             </p>
                         </form>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

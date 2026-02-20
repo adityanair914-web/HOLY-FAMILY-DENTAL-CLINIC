@@ -1,47 +1,55 @@
-
 import { motion } from 'framer-motion';
 
 const Doctors = () => {
     const doctors = [
         {
-            name: "Dr. Thara Maria Joseph",
-            role: "Lead Dentist & Owner",
-            specialty: "Prosthodontics & Implantology",
-            bio: "BDS, University of Calicut | 13 Years Experience | KSDC Reg. #11153 | Expert in Implants, Crowns & Restorative Dentistry",
-            image: "https://placehold.co/400x400?text=Dr.+Thara",
-            badge: "KSDC Reg. #11153"
+            name: 'Dr. Thara Maria Joseph',
+            role: 'Lead Dentist & Owner',
+            specialty: 'Prosthodontics & Implantology',
+            bio: 'BDS, University of Calicut | 13 Years Experience | KSDC Reg. #11153 | Expert in Implants, Crowns & Restorative Dentistry',
+            image: 'https://placehold.co/400x400/E8F0F1/2F3E3C?text=Dr.+Thara',
+            badge: 'KSDC Reg. #11153',
         },
         {
-            name: "Dr. Bijo Kurian",
-            role: "Co-Owner",
-            specialty: "Endodontics & Root Canal",
-            bio: "Renowned for painless Root Canal Treatments. Trusted by hundreds of patients across Kottayam for precise, pain-free endodontic care.",
-            image: "https://placehold.co/400x400?text=Dr.+Bijo",
-            badge: "Root Canal Expert"
+            name: 'Dr. Bijo Kurian',
+            role: 'Co-Owner',
+            specialty: 'Endodontics & Root Canal',
+            bio: 'Renowned for painless Root Canal Treatments. Trusted by hundreds of patients across Kottayam for precise, pain-free endodontic care.',
+            image: 'https://placehold.co/400x400/E8F0F1/2F3E3C?text=Dr.+Bijo',
+            badge: 'Root Canal Expert',
         },
         {
-            name: "Dr. Rahul",
-            role: "Associate Dentist",
-            specialty: "General & Preventive Dentistry",
-            bio: "Known for his caring and professional demeanor. Ensures every patient feels comfortable and well-informed throughout treatment.",
-            image: "https://placehold.co/400x400?text=Dr.+Rahul",
-            badge: "Patient Favorite"
-        }
+            name: 'Dr. Rahul',
+            role: 'Associate Dentist',
+            specialty: 'General & Preventive Dentistry',
+            bio: 'Known for his caring and professional demeanor. Ensures every patient feels comfortable and well-informed throughout treatment.',
+            image: 'https://placehold.co/400x400/E8F0F1/2F3E3C?text=Dr.+Rahul',
+            badge: 'Patient Favorite',
+        },
     ];
 
     return (
-        <section id="doctors" className="py-20 bg-light">
+        <section id="doctors" className="py-24 bg-mint">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <span className="text-accent font-bold tracking-widest text-sm uppercase">Our Team</span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary mt-2">
+
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-16"
+                >
+                    <span className="section-label mb-4">Our Team</span>
+                    <h2 className="font-display text-4xl md:text-5xl text-primary mt-3 mb-4">
                         Meet Our Expert Doctors
                     </h2>
-                    <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    <p className="text-muted max-w-xl mx-auto">
                         Highly qualified professionals dedicated to your smile and dental health.
                     </p>
-                </div>
+                </motion.div>
 
+                {/* Cards */}
                 <div className="grid md:grid-cols-3 gap-8">
                     {doctors.map((doc, index) => (
                         <motion.div
@@ -49,34 +57,36 @@ const Doctors = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.2, duration: 0.5 }}
-                            whileHover={{ y: -10 }}
-                            className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+                            transition={{ delay: index * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                            whileHover={{ y: -8 }}
+                            className="bg-white rounded-3xl overflow-hidden shadow-teal-sm hover:shadow-teal-lg
+                                       border border-border transition-all duration-350"
                         >
-                            <div className="relative h-64 overflow-hidden bg-primary/5">
+                            {/* Image */}
+                            <div className="relative h-64 overflow-hidden bg-mint">
                                 <img
                                     src={doc.image}
                                     alt={doc.name}
-                                    className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-110"
+                                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                                 />
-                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm">
+                                {/* Badge */}
+                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-primary shadow-teal-sm">
                                     {doc.badge}
                                 </div>
                             </div>
 
+                            {/* Content */}
                             <div className="p-6">
-                                <div className="mb-4">
-                                    <h3 className="text-xl font-bold text-primary mb-1">{doc.name}</h3>
-                                    <p className="text-accent font-medium text-sm">{doc.role}</p>
-                                </div>
+                                <h3 className="font-display text-2xl font-semibold text-primary mb-0.5">
+                                    {doc.name}
+                                </h3>
+                                <p className="text-teal font-medium text-sm mb-3">{doc.role}</p>
 
-                                <div className="inline-block bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full mb-4 font-medium">
+                                <span className="inline-block bg-secondary/30 text-primary text-xs px-3 py-1 rounded-full mb-4 font-medium border border-secondary/40">
                                     {doc.specialty}
-                                </div>
+                                </span>
 
-                                <p className="text-gray-600 text-sm leading-relaxed">
-                                    {doc.bio}
-                                </p>
+                                <p className="text-muted text-sm leading-relaxed">{doc.bio}</p>
                             </div>
                         </motion.div>
                     ))}

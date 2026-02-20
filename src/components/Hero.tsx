@@ -1,118 +1,157 @@
-
 import { motion } from 'framer-motion';
 import { FaWhatsapp, FaTooth, FaStar, FaMapMarkerAlt, FaArrowRight } from 'react-icons/fa';
 
 const Hero = () => {
-    return (
-        <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-            {/* Background with abstract mesh/gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0f2c5c] via-[#1a4a8a] to-[#0f2c5c]">
-                <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
-                {/* Abstract Circles */}
-                <div className="absolute top-20 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
-            </div>
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: { staggerChildren: 0.15 }
+        }
+    };
+    const itemVariants = {
+        hidden: { opacity: 0, y: 32 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+    };
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    {/* Text Content */}
+    return (
+        <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-hero">
+
+            {/* Decorative blobs */}
+            <motion.div
+                animate={{ scale: [1, 1.08, 1], rotate: [0, 8, 0] }}
+                transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute top-16 right-[-80px] w-[420px] h-[420px] blob bg-secondary/20 opacity-60"
+            />
+            <motion.div
+                animate={{ scale: [1, 1.06, 1], rotate: [0, -6, 0] }}
+                transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+                className="absolute bottom-[-60px] left-[-100px] w-[500px] h-[500px] blob bg-accent/15"
+            />
+            {/* Fine texture overlay */}
+            <div className="absolute inset-0 opacity-[0.04] bg-[url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png')]" />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-16">
+                <div className="grid md:grid-cols-2 gap-14 items-center">
+
+                    {/* ── Text Content ── */}
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
                         className="text-center md:text-left"
                     >
-                        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full text-blue-100 text-sm font-medium mb-6 border border-white/10">
-                            <FaStar className="text-yellow-400" />
-                            <span>4.9★ Rated • 13+ Years of Excellence</span>
-                        </div>
-
-                        <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
-                            Your Smile Is <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-cyan-300">
-                                Our Passion
+                        {/* Rating badge */}
+                        <motion.div variants={itemVariants}>
+                            <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-1.5 rounded-full text-sm font-medium text-secondary mb-6">
+                                <FaStar className="text-amber-300" />
+                                4.9★ Rated &nbsp;·&nbsp; 13+ Years of Excellence
                             </span>
-                        </h1>
+                        </motion.div>
 
-                        <p className="text-xl md:text-2xl text-blue-100 mb-4 font-light">
-                            Advanced Root Canal & Implant Centre
-                        </p>
+                        {/* Headline */}
+                        <motion.h1
+                            variants={itemVariants}
+                            className="font-display text-5xl md:text-7xl font-semibold text-white leading-tight mb-6"
+                        >
+                            Your Smile Is{' '}
+                            <br />
+                            <span className="italic text-secondary">Our Passion</span>
+                        </motion.h1>
 
-                        <p className="text-blue-200/80 mb-8 max-w-lg mx-auto md:mx-0">
-                            Specialized dental care in Kuravilangad. Experience painless treatments
-                            with Dr. Thara Maria Joseph & Team.
-                        </p>
+                        <motion.p variants={itemVariants} className="text-xl text-white/70 font-light mb-2">
+                            Advanced Root Canal &amp; Implant Centre
+                        </motion.p>
+                        <motion.p variants={itemVariants} className="text-white/50 mb-10 max-w-md mx-auto md:mx-0 leading-relaxed">
+                            Specialized dental care in Kuravilangad. Painless treatments with
+                            Dr.&nbsp;Thara Maria Joseph &amp; Team.
+                        </motion.p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-12">
+                        {/* CTAs */}
+                        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-14">
                             <a
-                                href="https://wa.me/91XXXXXXXXXX"
+                                href="https://wa.me/919447XXXXXX"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 bg-success text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-600 transition-all shadow-lg hover:shadow-cyan-500/25 transform hover:-translate-y-1"
+                                className="btn-whatsapp text-base px-8 py-4 shadow-teal-lg"
                             >
-                                <FaWhatsapp size={22} />
+                                <FaWhatsapp size={20} />
                                 Book Appointment
                             </a>
-                            <a
-                                href="#services"
-                                className="flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-lg text-white border-2 border-white/20 hover:bg-white/10 transition-all"
-                            >
+                            <a href="#services" className="btn-outline border-white/30 text-white hover:border-white hover:bg-white/10 text-base px-8 py-4">
                                 Explore Services
-                                <FaArrowRight size={16} />
+                                <FaArrowRight size={14} />
                             </a>
-                        </div>
+                        </motion.div>
 
-                        {/* Trust Badges */}
-                        <div className="grid grid-cols-3 gap-4 border-t border-white/10 pt-8 mt-8">
-                            <div className="text-center md:text-left">
-                                <div className="flex items-center justify-center md:justify-start gap-2 text-white font-medium mb-1">
-                                    <FaTooth className="text-accent" />
-                                    <span>Painless RCT</span>
+                        {/* Trust badges */}
+                        <motion.div variants={itemVariants} className="grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
+                            {[
+                                { icon: <FaTooth />, title: 'Painless RCT', sub: 'Single sitting options' },
+                                { icon: <FaStar />, title: 'Top Rated', sub: '110+ Reviews' },
+                                { icon: <FaMapMarkerAlt />, title: 'Central Loc', sub: 'Near Bus Station' },
+                            ].map((badge) => (
+                                <div key={badge.title} className="text-center md:text-left">
+                                    <div className="flex items-center justify-center md:justify-start gap-2 text-secondary font-semibold mb-0.5 text-sm">
+                                        <span className="text-accent">{badge.icon}</span>
+                                        {badge.title}
+                                    </div>
+                                    <p className="text-xs text-white/40">{badge.sub}</p>
                                 </div>
-                                <p className="text-xs text-blue-300">Single sitting options</p>
-                            </div>
-                            <div className="text-center md:text-left">
-                                <div className="flex items-center justify-center md:justify-start gap-2 text-white font-medium mb-1">
-                                    <FaStar className="text-accent" />
-                                    <span>Top Rated</span>
-                                </div>
-                                <p className="text-xs text-blue-300">110+ Reviews</p>
-                            </div>
-                            <div className="text-center md:text-left">
-                                <div className="flex items-center justify-center md:justify-start gap-2 text-white font-medium mb-1">
-                                    <FaMapMarkerAlt className="text-accent" />
-                                    <span>Central Loc</span>
-                                </div>
-                                <p className="text-xs text-blue-300">Near Bus Station</p>
-                            </div>
-                        </div>
+                            ))}
+                        </motion.div>
                     </motion.div>
 
-                    {/* Hero Image / Illustration Placeholder */}
+                    {/* ── Hero Visual ── */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
+                        initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                         className="hidden md:block relative"
                     >
-                        <div className="relative z-10 w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10">
+                        {/* Floating ring */}
+                        <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                            className="absolute -inset-6 rounded-full border border-secondary/20 border-dashed"
+                        />
+
+                        <div className="relative z-10 w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-teal-lg border border-white/10">
                             <img
-                                src="https://placehold.co/800x600?text=Modern+Dental+Clinic+Interior"
-                                alt="Holy Family Dental Care Clinic"
+                                src="https://placehold.co/800x600/2F3E3C/BDDBD1?text=Holy+Family+Dental+Care"
+                                alt="Holy Family Dental Care Clinic Interior"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
 
-                            <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur rounded-2xl p-4 flex items-center gap-4 shadow-lg">
-                                <div className="bg-green-100 p-3 rounded-full text-green-600">
-                                    <FaTooth size={24} />
+                            {/* Bottom info card */}
+                            <motion.div
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.9, duration: 0.6 }}
+                                className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur-md rounded-2xl p-4 flex items-center gap-4 shadow-teal-md"
+                            >
+                                <div className="bg-secondary p-3 rounded-full text-primary">
+                                    <FaTooth size={22} />
                                 </div>
                                 <div>
-                                    <p className="font-bold text-dark">Dr. Thara's Practice</p>
-                                    <p className="text-sm text-gray-500">Established 2013</p>
+                                    <p className="font-display font-semibold text-primary text-lg leading-none">Dr. Thara's Practice</p>
+                                    <p className="text-sm text-muted mt-1">Established 2013 · Kuravilangad</p>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
+
+                        {/* Floating stat pill */}
+                        <motion.div
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                            className="absolute -top-4 -left-6 bg-white rounded-2xl shadow-teal-md px-5 py-3 flex items-center gap-3"
+                        >
+                            <div className="bg-amber-50 p-2 rounded-xl text-amber-400 text-xl">⭐</div>
+                            <div>
+                                <p className="font-bold text-primary text-base leading-none">4.9 / 5</p>
+                                <p className="text-xs text-muted">Google Rating</p>
+                            </div>
+                        </motion.div>
                     </motion.div>
                 </div>
             </div>

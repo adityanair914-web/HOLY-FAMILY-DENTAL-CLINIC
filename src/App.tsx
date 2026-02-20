@@ -62,7 +62,7 @@ function App() {
     };
 
     return (
-        <div className="font-sans antialiased text-dark bg-white overflow-x-hidden selection:bg-accent selection:text-white">
+        <div className="font-sans antialiased text-dark bg-light overflow-x-hidden selection:bg-secondary selection:text-primary">
             <Helmet>
                 <title>Holy Family Dental Care | Best Dental Clinic in Kuravilangad, Kottayam</title>
                 <meta name="description" content="Advanced Root Canal, Implants & Cosmetic Dentistry in Kuravilangad, Kottayam. 4.9★ rated. 13+ years experience. Dr. Thara Maria Joseph & Dr. Bijo Kurian. Book appointment: ₹150 consultation." />

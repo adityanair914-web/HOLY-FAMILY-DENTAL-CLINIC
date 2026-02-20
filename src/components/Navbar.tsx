@@ -7,9 +7,7 @@ const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
+        const handleScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -24,40 +22,45 @@ const Navbar = () => {
     ];
 
     return (
-        <nav
-            className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'
-                }`}
-        >
+        <nav className={`fixed w-full z-50 transition-all duration-400 ${scrolled
+                ? 'bg-light/95 backdrop-blur-md shadow-teal-sm py-3'
+                : 'bg-transparent py-5'
+            }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+
                 {/* Logo */}
-                <a href="#" className="flex items-center gap-2 group">
-                    <div className="bg-primary p-2 rounded-full text-white group-hover:scale-110 transition-transform">
-                        <FaTooth size={20} />
+                <a href="#" className="flex items-center gap-2.5 group">
+                    <div className={`p-2 rounded-full transition-all duration-300 group-hover:scale-110 ${scrolled ? 'bg-primary text-white' : 'bg-white/15 text-white backdrop-blur-sm'
+                        }`}>
+                        <FaTooth size={18} />
                     </div>
-                    <span className={`font-bold text-xl tracking-tight ${scrolled ? 'text-primary' : 'text-white'}`}>
-                        Holy Family <span className="text-accent">Dental Care</span>
+                    <span className={`font-display text-xl font-semibold tracking-tight transition-colors duration-300 ${scrolled ? 'text-primary' : 'text-white'
+                        }`}>
+                        Holy Family{' '}
+                        <span className={scrolled ? 'text-teal' : 'text-secondary'}>Dental Care</span>
                     </span>
                 </a>
 
                 {/* Desktop Nav */}
-                <div className="hidden md:flex items-center space-x-8">
+                <div className="hidden md:flex items-center space-x-7">
                     {navLinks.map((link) => (
                         <a
                             key={link.name}
                             href={link.href}
-                            className={`text-sm font-medium transition-colors hover:text-accent ${scrolled ? 'text-dark' : 'text-white/90'
+                            className={`text-sm font-medium relative transition-colors duration-200 group ${scrolled ? 'text-dark hover:text-teal' : 'text-white/85 hover:text-secondary'
                                 }`}
                         >
                             {link.name}
+                            <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-teal rounded-full transition-all duration-300 group-hover:w-full" />
                         </a>
                     ))}
                     <a
-                        href="https://wa.me/91XXXXXXXXXX" // TODO: Replace placeholder
+                        href="https://wa.me/919447XXXXXX"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 bg-success text-white px-5 py-2.5 rounded-full font-medium text-sm hover:bg-green-600 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        className="btn-whatsapp shadow"
                     >
-                        <FaWhatsapp size={18} />
+                        <FaWhatsapp size={16} />
                         Book Appointment
                     </a>
                 </div>
@@ -65,10 +68,11 @@ const Navbar = () => {
                 {/* Mobile Menu Button */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className={`md:hidden p-2 rounded-lg transition-colors ${scrolled ? 'text-dark hover:bg-gray-100' : 'text-white hover:bg-white/10'
+                    className={`md:hidden p-2 rounded-lg transition-colors ${scrolled ? 'text-primary hover:bg-secondary/20' : 'text-white hover:bg-white/10'
                         }`}
+                    aria-label="Toggle menu"
                 >
-                    {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                    {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
                 </button>
             </div>
 
@@ -79,27 +83,28 @@ const Navbar = () => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="md:hidden bg-white border-t border-gray-100 overflow-hidden shadow-xl"
+                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                        className="md:hidden bg-light border-t border-border overflow-hidden shadow-teal-md"
                     >
-                        <div className="px-4 pt-2 pb-6 space-y-2">
+                        <div className="px-4 pt-3 pb-6 space-y-1">
                             {navLinks.map((link) => (
                                 <a
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className="block px-3 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-blue-50 transition-colors"
+                                    className="block px-4 py-3 rounded-xl text-base font-medium text-dark hover:text-teal hover:bg-secondary/20 transition-colors"
                                 >
                                     {link.name}
                                 </a>
                             ))}
                             <a
-                                href="https://wa.me/91XXXXXXXXXX"
+                                href="https://wa.me/919447XXXXXX"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={() => setIsOpen(false)}
-                                className="flex items-center justify-center gap-2 w-full bg-success text-white px-4 py-3 rounded-xl font-medium mt-4 hover:bg-green-600 active:scale-95 transition-all"
+                                className="btn-whatsapp w-full mt-4 py-3.5"
                             >
-                                <FaWhatsapp size={20} />
+                                <FaWhatsapp size={18} />
                                 Book via WhatsApp
                             </a>
                         </div>
