@@ -77,7 +77,7 @@ function App() {
                 <meta property="og:description" content="Advanced Root Canal & Implant Centre. 4.9★ rated. Painless treatments. Central Junction, Kuravilangad." />
                 <meta property="og:type" content="website" />
                 <meta property="og:locale" content="en_IN" />
-                <meta property="og:image" content="https://placehold.co/1200x630?text=Holy+Family+Dental+Care" />
+                <meta property="og:image" content="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&h=630&fit=crop&q=80" />
 
                 {/* Schema Markup */}
                 <script type="application/ld+json">

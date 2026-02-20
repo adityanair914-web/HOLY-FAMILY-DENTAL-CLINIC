@@ -25,7 +25,7 @@ const About = () => {
                         <div className="absolute -inset-4 bg-secondary/20 rounded-3xl -z-10 blur-sm" />
                         <div className="relative rounded-2xl overflow-hidden shadow-teal-lg">
                             <img
-                                src="https://placehold.co/600x800/E8F0F1/2F3E3C?text=Clinic+Reception"
+                                src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=800&fit=crop&q=80"
                                 alt="Holy Family Dental Care Reception"
                                 className="w-full h-full object-cover"
                             />

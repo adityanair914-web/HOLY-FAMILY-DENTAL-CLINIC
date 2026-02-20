@@ -117,7 +117,7 @@ const Hero = () => {
 
                         <div className="relative z-10 w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-teal-lg border border-white/10">
                             <img
-                                src="https://placehold.co/800x600/2F3E3C/BDDBD1?text=Holy+Family+Dental+Care"
+                                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&h=600&fit=crop&q=80"
                                 alt="Holy Family Dental Care Clinic Interior"
                                 className="w-full h-full object-cover"
                             />

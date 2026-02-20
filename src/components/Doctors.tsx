@@ -7,7 +7,7 @@ const Doctors = () => {
             role: 'Lead Dentist & Owner',
             specialty: 'Prosthodontics & Implantology',
             bio: 'BDS, University of Calicut | 13 Years Experience | KSDC Reg. #11153 | Expert in Implants, Crowns & Restorative Dentistry',
-            image: 'https://placehold.co/400x400/E8F0F1/2F3E3C?text=Dr.+Thara',
+            image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&q=80',
             badge: 'KSDC Reg. #11153',
         },
         {
@@ -15,7 +15,7 @@ const Doctors = () => {
             role: 'Co-Owner',
             specialty: 'Endodontics & Root Canal',
             bio: 'Renowned for painless Root Canal Treatments. Trusted by hundreds of patients across Kottayam for precise, pain-free endodontic care.',
-            image: 'https://placehold.co/400x400/E8F0F1/2F3E3C?text=Dr.+Bijo',
+            image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop&q=80',
             badge: 'Root Canal Expert',
         },
         {
@@ -23,7 +23,7 @@ const Doctors = () => {
             role: 'Associate Dentist',
             specialty: 'General & Preventive Dentistry',
             bio: 'Known for his caring and professional demeanor. Ensures every patient feels comfortable and well-informed throughout treatment.',
-            image: 'https://placehold.co/400x400/E8F0F1/2F3E3C?text=Dr.+Rahul',
+            image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&q=80',
             badge: 'Patient Favorite',
         },
     ];

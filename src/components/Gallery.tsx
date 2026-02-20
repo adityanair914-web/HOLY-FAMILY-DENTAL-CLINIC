@@ -9,14 +9,14 @@ const Gallery = () => {
     const [index, setIndex] = useState(0);
 
     const images = [
-        { src: 'https://placehold.co/800x600/E8F0F1/2F3E3C?text=Clinic+Exterior', alt: 'Clinic Exterior' },
-        { src: 'https://placehold.co/800x600/BDDBD1/2F3E3C?text=Reception+Area', alt: 'Reception' },
-        { src: 'https://placehold.co/800x600/C7E7EC/2F3E3C?text=Treatment+Room', alt: 'Treatment Room' },
-        { src: 'https://placehold.co/800x600/E7E9E3/2F3E3C?text=Advanced+Equipment', alt: 'Modern Equipment' },
-        { src: 'https://placehold.co/800x600/FBF9F1/2F3E3C?text=Dental+Chair', alt: 'Comfortable Chairs' },
-        { src: 'https://placehold.co/800x600/E8F0F1/2F3E3C?text=Sterilization+Area', alt: 'Sterilization' },
-        { src: 'https://placehold.co/800x600/BDDBD1/2F3E3C?text=Waiting+Area', alt: 'Waiting Area' },
-        { src: 'https://placehold.co/800x600/C7E7EC/2F3E3C?text=Smile+Result', alt: 'Smile Makeover' },
+        { src: 'https://images.unsplash.com/photo-1629909615957-be38d48fbbe4?w=800&h=600&fit=crop&q=80', alt: 'Clinic Exterior' },
+        { src: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&h=600&fit=crop&q=80', alt: 'Reception' },
+        { src: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&h=600&fit=crop&q=80', alt: 'Treatment Room' },
+        { src: 'https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&h=600&fit=crop&q=80', alt: 'Modern Equipment' },
+        { src: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&h=600&fit=crop&q=80', alt: 'Comfortable Chairs' },
+        { src: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=800&h=600&fit=crop&q=80', alt: 'Sterilization' },
+        { src: 'https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=800&h=600&fit=crop&q=80', alt: 'Waiting Area' },
+        { src: 'https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=800&h=600&fit=crop&q=80', alt: 'Smile Makeover' },
     ];
 
     return (
