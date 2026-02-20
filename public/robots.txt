@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://holyfamilydentalcare.com/sitemap.xml
+
+# Block dev/build artefacts from indexing
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /*.log$
