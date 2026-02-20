@@ -13,21 +13,25 @@ import Directions from './components/Directions';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import ScrollToTop from './components/ScrollToTop';
+import WaveDivider from './components/WaveDivider';
+
+// Colour palette tokens (must match tailwind.config.js)
+const C = {
+    primary: '#2F3E3C',
+    secondary: '#BDDBD1',
+    light: '#FBF9F1',
+    mint: '#E8F0F1',
+};
 
 function App() {
-    // Smooth scroll fix for anchor links
     useEffect(() => {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetId = (e.currentTarget as HTMLAnchorElement).getAttribute('href')?.substring(1);
                 if (targetId) {
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
+                    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
@@ -73,7 +77,6 @@ function App() {
                 <meta property="og:description" content="Advanced Root Canal & Implant Centre. 4.9★ rated. Painless treatments. Central Junction, Kuravilangad." />
                 <meta property="og:type" content="website" />
                 <meta property="og:locale" content="en_IN" />
-                {/* TODO: Add real OG Image URL */}
                 <meta property="og:image" content="https://placehold.co/1200x630?text=Holy+Family+Dental+Care" />
 
                 {/* Schema Markup */}
@@ -85,20 +88,64 @@ function App() {
             <Navbar />
 
             <main>
+                {/* Hero — bg: gradient-hero (dark teal) */}
                 <Hero />
+
+                {/* StatsBar — bg: secondary (#BDDBD1) */}
                 <StatsBar />
+
+                {/* Wave: secondary → light */}
+                <WaveDivider topColor={C.secondary} bottomColor={C.light} />
+
+                {/* About — bg: light (#FBF9F1) */}
                 <About />
+
+                {/* Wave: light → mint */}
+                <WaveDivider topColor={C.light} bottomColor={C.mint} />
+
+                {/* Doctors — bg: mint (#E8F0F1) */}
                 <Doctors />
+
+                {/* Wave: mint → light */}
+                <WaveDivider topColor={C.mint} bottomColor={C.light} />
+
+                {/* Services — bg: light (#FBF9F1) */}
                 <Services />
+
+                {/* Wave: light → primary (WhyChooseUs dark section) */}
+                <WaveDivider topColor={C.light} bottomColor={C.primary} />
+
+                {/* WhyChooseUs — bg: gradient-dental (primary) */}
                 <WhyChooseUs />
+
+                {/* Wave: primary → light */}
+                <WaveDivider topColor={C.primary} bottomColor={C.light} />
+
+                {/* Testimonials — bg: light */}
                 <Testimonials />
+
+                {/* Wave: light → mint */}
+                <WaveDivider topColor={C.light} bottomColor={C.mint} />
+
+                {/* Gallery — bg: mint  */}
                 <Gallery />
+
+                {/* Wave: mint → light */}
+                <WaveDivider topColor={C.mint} bottomColor={C.light} />
+
+                {/* Directions — bg: light */}
                 <Directions />
+
+                {/* Contact — bg: light */}
                 <Contact />
+
+                {/* Wave into footer */}
+                <WaveDivider topColor={C.light} bottomColor={C.primary} />
             </main>
 
             <Footer />
             <FloatingWhatsApp />
+            <ScrollToTop />
         </div>
     );
 }
